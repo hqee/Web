@@ -129,10 +129,12 @@ body {
     inset-block: 0;
     inset-inline-end: 0;
    }
+
    main aside .social-media {
     height: 100%;
     display: flex;
    }
+   
    main aside .social-media ul {
     padding: 1.5rem 1rem;
     border-top-left-radius: 12px;
