@@ -1,0 +1,144 @@
+<!--
+    Nama    : Haqi Dhiya FIrmana
+    NIM     : 23051130016
+    Kelas   : J2
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Penjualan</title>
+    </head>
+
+    <body>
+        <p>
+            Mie Ayam
+            
+            <!-- membuat button "Tambah" untuk memesan Mie Ayam -->
+            <button onclick="
+                pesan('mieayam');
+            ">Tambah</button>
+            
+            <!-- button untuk pengurangan -->
+            <button onclick="kurangi('mieayam')">Kurangi</button>
+            
+            <!-- menampilkan jumlah pesanan mie ayam -->
+            <b class="ma"></b>
+            
+            <!-- menampilkan hasil perhitungan jumlah pesanan dan harga mie ayam -->
+            <b class="ma-tot"></b>
+            <br>
+            
+            <!-- untuk Mie Ayam Bakso dan Es Teh Manis lihat penjelasan Mie Ayam -->
+            Mie Ayam Bakso
+            
+            <!-- membuat button "Tambah" untuk memesan Mie Ayam Bakso -->
+            <button onclick="
+                pesan('mieayambakso');
+            ">Tambah</button>
+
+            <!-- button untuk pengurangan -->
+            <button onclick="kurangi('mieayambakso')">Kurangi</button>
+
+            <b class="mab"></b>
+            <b class="mab-tot"></b>
+            <br>
+            Es Teh Manis
+            
+            <!-- membuat button "Tambah" untuk memesan Es Teh Manis -->
+            <button onclick="
+                pesan('estehmanis');
+            ">Tambah</button>
+
+            <!-- button untuk pengurangan -->
+            <button onclick="kurangi('estehmanis')">Kurangi</button>
+
+            <b class="etm"></b>
+            <b class="etm-tot"></b>
+            <br><br>
+            
+            <!-- menampilkan hasil perhitungan semua pesanan -->
+            Sub Total: <b class="sbt">0</b> <br>
+            
+            <!-- menampilkan besarnya pajak -->
+            Pajak 10%: <b class="pjk">0</b> <br>
+            
+            <!-- menampilkan hasil perhitungan semua pesanan ditambah pajak -->
+            <h2><b style="color: red">Total: <b class="tot">0</b></b></h2>
+        </p>
+
+        <script>
+        // JavaScript ini akan dieksekusi pada saat dokumen HTML dijalankan
+        // membuat variabel dengan menggunakan "let"
+        // inisialisasi
+        let jumlahMA = 0; // variabel untuk Mie Ayam
+        let jumlahMAB = 0; // variabel untuk Mie Ayam Bakso
+        let jumlahETM = 0; // variabel untuk Es Teh Manis
+
+        function harga(item) {
+            if(item === 'mieayam')
+            return jumlahMA * 9500;
+            else if(item === 'mieayambakso')
+            return jumlahMAB * 10500;
+            else
+            return jumlahETM * 4100;
+        }
+
+        function subtotal() {
+            return harga('mieayam') + harga('mieayambakso') + harga('estehmanis');
+            }
+            function pajak() {
+            return subtotal() * 0.1;
+            }
+            function total() {
+            return subtotal() + pajak();
+        }
+
+        function keterangan() {
+            document.querySelector('.sbt').innerHTML = subtotal();
+            document.querySelector('.pjk').innerHTML = pajak();
+            document.querySelector('.tot').innerHTML = total();
+        }
+
+        function pesan (tambah) {
+            if(tambah === 'mieayam') {
+            ++jumlahMA;
+            document.querySelector('.ma').innerHTML = jumlahMA;
+            document.querySelector('.ma-tot').innerHTML = harga('mieayam');
+            keterangan();
+            }
+            else if(tambah === 'mieayambakso') {
+            ++jumlahMAB;
+            document.querySelector('.mab').innerHTML = jumlahMAB;
+            document.querySelector('.mab-tot').innerHTML = harga('mieayambakso');
+            keterangan();
+            }
+            else if(tambah === 'estehmanis'){
+            ++jumlahETM;
+            document.querySelector('.etm').innerHTML = jumlahETM;
+            document.querySelector('.etm-tot').innerHTML = harga('estehmanis');
+            keterangan();
+            }
+        }
+
+        function kurangi(tambah) {
+            if (tambah === 'mieayam' && jumlahMA > 0) {
+                --jumlahMA;
+                document.querySelector('.ma').innerHTML = jumlahMA;
+                document.querySelector('.ma-tot').innerHTML = harga('mieayam');
+                keterangan();
+            } else if (tambah === 'mieayambakso' && jumlahMAB > 0) {
+                --jumlahMAB;
+                document.querySelector('.mab').innerHTML = jumlahMAB;
+                document.querySelector('.mab-tot').innerHTML = harga('mieayambakso');
+                keterangan();
+            } else if (tambah === 'estehmanis' && jumlahETM > 0 ) {
+                --jumlahETM;
+                document.querySelector('.etm').innerHTML = jumlahETM;
+                document.querySelector('.etm-tot').innerHTML = harga('estehmanis');
+                keterangan();
+            }
+        }   
+        </script>
+    </body>
+</html>
