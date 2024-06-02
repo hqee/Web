@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<title>Array</title>
+	<body>
+		<p>
+			<h1 style="color: green;">Array</h1>
+			<h3>Input Data</h3>
+				<!-- elemen input -->
+				<input class="data-array"/><br>
+
+				<!-- membuat button -->
+				<button onclick="push_array()">
+					Push
+				</button>
+				<button onclick="pop_array()">
+					Pop
+				</button>
+				<button onclick="shift_array()">
+					Shift
+				</button>
+				<button onclick="unshift_array()">
+					Unshift
+				</button>
+			<br>
+			
+			<h3 class="array-data"></h3>
+			<!-- membuat ordered list -->
+			<ol id="daftar"></ol>
+		</p>
+
+		<script>
+			var arai = [],
+					masukan,
+					jumlah = 0,
+					tombol,
+					bikin;
+			
+					// meletakkan kursor pada elemen input
+			document.querySelector('.data-array').focus();
+
+			//----------------------------------------------------------
+			function push_array() { // function memasukkan data ke dalam array
+				// jika tidak ada data field input maka akan muncul alert
+                if (document.querySelector('.data-array').value == '') {
+                    alert('Data tidak boleh kosong');
+                    return;
+                }
+                
+                // mengakses class data-array yang merupakan elemen input
+				masukan = document.querySelector('.data-array');
+
+				// mengambil data dari elemen input dan dimasukkan ke Array
+				arai.push(masukan.value);
+				console.log(arai); // menampilkan data array di console
+
+				// mengakses elemen ordered list
+				list = document.getElementById("daftar");
+
+				// membuat elemen ordered list
+				li = document.createElement('li');
+
+				// menampilkan data yanga ada pada Array di ordered list
+				li.innerText = arai[jumlah];
+
+				// menambahkan ordered list
+				list.appendChild(li);
+
+				// menampilkan judul
+				document.querySelector('.array-data').innerHTML = "Data Dalam Array";
+				jumlah++; // jumlah data bertambah karena ada data masuk di array
+				
+				// elemen input dikosongkan
+				document.querySelector('.data-array').value = '';
+
+				// meletakkan kursor pada elemen input
+				document.querySelector('.data-array').focus();
+			}
+
+			//----------------------------------------------------------
+			// function menghapus data terakhir pada array
+			function pop_array() {
+                if (arai.length == 0) {
+                    alert('Data Kosong');
+                    return;
+                }
+                
+				arai.pop();
+				jumlah--;
+				console.log(arai);
+				// mengakses elemen ordered list
+				list = document.getElementById("daftar");
+
+				// menghapus ordered list yang terakhir/belakang
+				list.removeChild(list.children[list.children.length - 1]);
+			}
+
+			//----------------------------------------------------------
+			// function menghapus data pertama di array
+			function shift_array() {
+                if (arai.length == 0) {
+                    alert('Data Kosong');
+                    return;
+                }
+
+				arai.shift();
+				jumlah--;
+				console.log(arai);
+				/* sama dengan function pop_array tetapi yang dihapus
+				   adalah ordered list yang pertama/ depan */
+				list = document.getElementById("daftar");
+				list.removeChild(list.children[list.children.length - list.children.length]);
+			}
+
+			//----------------------------------------------------------
+			// menambahkan data di awal array
+			function unshift_array() {
+                if (document.querySelector('.data-array').value == '') {
+                    alert('Data tidak boleh kosong');
+                    return;
+                }
+
+				let kurang = jumlah;
+				list = document.getElementById("daftar");
+
+				// semua ordered array yang ada dihapus
+				while (kurang>0) {
+					list.removeChild(list.children[list.children.length - 1]);
+					kurang--;
+				}
+
+				masukan = document.querySelector('.data-array');
+
+				// memasukkan data di awal array
+				arai.unshift(masukan.value);
+				console.log(arai);
+				/* membuat ordered array baru berdasarkan isi array
+				   dimana setiap ordered list ada button */
+				for(let i=0;i<arai.length;i++) {
+					li = document.createElement('li');
+					li.innerText = arai[i];
+					list.appendChild(li);
+				}
+				jumlah++;
+				document.querySelector('.data-array').value = '';
+				document.querySelector('.data-array').focus();
+			}
+		</script>
+	</body>
+</html>
