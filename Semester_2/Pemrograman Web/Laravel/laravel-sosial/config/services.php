@@ -20,6 +20,23 @@ return [
         'redirect' => 'http://127.0.0.1:8000/auth/google/callback',
     ],
 
+    'twitter' => [
+        'client_id' => env('Tq4rP2PfTe8LssF3nsbmFhjUCe'),
+        'client_secret' => env('wx7qGU56q6xeWt1HvP6V9OwrPckBajbzdvSeLRNq2TtKRHAzed'),
+        'redirect' => 'http://127.0.0.1:8000/auth/twitter/callback',
+    ],
+
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT'),
+    ],
+
+    'yahoo' => [
+        'client_id' => env('YAHOO_CLIENT_ID'),
+        'client_secret' => env('YAHOO_CLIENT_SECRET'),
+        'redirect' => env('YAHOO_REDIRECT'),
+    ],
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),

@@ -69,6 +69,21 @@
                                     <i class="fab fa-google" aria-hidden="true"></i>&nbsp;Google
                                 </a>
 
+                                <a class="ml-1 btn btn-primary btn-sm" href="{{ url('auth/twitter') }}" style="margintop: 0px !important;background: rgb(29, 161, 242);color: 
+                                #ffffff;padding: 5px;borderradius:7px;" id="btn-twlogin">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>&nbsp;Twitter
+                                </a>
+                                
+
+                                <a class="ml-1 btn btn-primary btn-sm" href="{{ url('auth/facebook') }}" style="margin-top: 0px !important;background: rgb(66, 103, 178);color: #ffffff;padding: 5px;border-radius:7px;" id="btn-fblogin">
+                                    <i class="fab fa-facebook" aria-hidden="true"></i>&nbsp;Facebook
+                                </a>
+
+                                <a class="ml-1 btn btn-primary btn-sm" href="{{ url('auth/yahoo') }}" style="margin-top: 0px !important;background: rgb(49, 112, 163);color: #ffffff;padding: 5px;border-radius:7px;" id="btn-ylogin">
+                                    <i class="fab fa-yahoo" aria-hidden="true"></i>&nbsp;Yahoo
+                                </a>
+
+
                             </div>
                         </div>
                     </form>
